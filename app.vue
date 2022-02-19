@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref } from "@vue/reactivity";
-import { onMounted, defineEmits } from "vue";
+import { onMounted } from "vue";
 import { Quiz } from "./types";
 import { useQuizGenerator } from "./composable/useQuizGenerator";
 
@@ -15,8 +15,13 @@ const inputAnswer = (v) => (correctCount.value += v ? 1 : 0);
 </script>
 
 <template>
-  <div>
-    <h1>quiz</h1>
+  <div class="mx-auto max-w-2xl px-2">
+    <Head>
+      <Title>ONKAN - the absolute pitch quiz.</Title>
+    </Head>
+    <h1 class="my-10">
+      <img src="~/assets/img/logo.svg" class="mx-auto" />
+    </h1>
     <QuizBlock
       v-for="(quiz, i) in quizList"
       @inputAnswer="inputAnswer"
@@ -24,6 +29,8 @@ const inputAnswer = (v) => (correctCount.value += v ? 1 : 0);
       :quiz="quiz"
       :quizNumber="i + 1"
     />
-    {{ correctCount }}
+    <p class="text-center my-10 text-xl font-bold">
+      {{ correctCount }} collect answers!
+    </p>
   </div>
 </template>

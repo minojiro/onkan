@@ -18,8 +18,8 @@ export const useQuizGenerator = () => {
   const generateQuizList = (): Quiz[] => [
     ...Array.from({ length: 3 }, () => generateQuiz(1, false)),
     ...Array.from({ length: 2 }, () => generateQuiz(1, true)),
-    ...Array.from({ length: 1 }, () => generateQuiz(3, false)),
-    ...Array.from({ length: 1 }, () => generateQuiz(3, true)),
+    ...Array.from({ length: 1 }, () => generateQuiz(2, false)),
+    ...Array.from({ length: 2 }, () => generateQuiz(3, true)),
   ];
   return { generateQuizList };
 };
