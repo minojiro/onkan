@@ -69,7 +69,7 @@ onMounted(() => {
   props.quiz.correct;
 });
 
-const collectAnswer = computed(() => {
+const correctAnswer = computed(() => {
   if (isAnswerd.value) {
     return props.quiz.correct.map((i) => tones[i].name).join(", ");
   }
@@ -81,7 +81,7 @@ const collectAnswer = computed(() => {
   <div class="bg-bg-200 my-5 px-3 pt-7 pb-10 rounded-sm" ref="rootRef">
     <h2 class="text-center mb-5 text-xl font-bold">No. {{ quizNumber }}</h2>
     <p class="text-center mb-5 text-4xl font-bold uppercase">
-      {{ collectAnswer }}
+      {{ correctAnswer }}
     </p>
     <form @submit.prevent="submit" class="block">
       <p class="w-40 mx-auto">
