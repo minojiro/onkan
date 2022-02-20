@@ -40,8 +40,6 @@ const inputAnswer = (v) => {
       :quiz="quiz"
       :quizNumber="i + 1"
     />
-    <p class="text-center my-10 text-xl font-bold">
-      {{ correctCount }} collect answers!
-    </p>
+    <p class="text-center my-10 text-xl font-bold">{{ correctCount }} point</p>
   </div>
 </template>

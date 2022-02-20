@@ -52,11 +52,21 @@ const KEY_CLASSES = [
 onMounted(() => {
   props.quiz.correct;
 });
+
+const userAnswer = computed(() => {
+  if (isAnswerd.value) {
+    return userInput.value.map((i) => tones[i].name).join(", ");
+  }
+  return "?";
+});
 </script>
 
 <template>
   <div class="bg-bg-200 my-5 px-3 pt-7 pb-10 rounded-sm">
     <h2 class="text-center mb-5 text-xl font-bold">No. {{ quizNumber }}</h2>
+    <p class="text-center mb-5 text-4xl font-bold uppercase">
+      {{ userAnswer }}
+    </p>
     <form @submit.prevent="submit" class="block">
       <p class="w-40 mx-auto">
         <FlatButton type="button" @click="playSound">play</FlatButton>
@@ -92,8 +102,8 @@ onMounted(() => {
         <p v-else-if="isAnswerd">
           {{ isUserInputCorrect ? "Collect!" : "wrong..." }}
         </p>
-        <p v-else class="w-24 mx-auto">
-          <FlatButton :disabled="isAnswerd" type="submit">OK</FlatButton>
+        <p v-else class="w-40 mx-auto">
+          <FlatButton fill :disabled="isAnswerd" type="submit">OK</FlatButton>
         </p>
       </div>
     </form>
