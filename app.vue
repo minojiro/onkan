@@ -7,15 +7,20 @@ import JSConfetti from "js-confetti";
 
 const quizList = ref<Quiz[]>([]);
 const confetti = ref(null);
-const correctCount = ref(0);
+const answerList = ref<Boolean[]>([]);
+const correctCount = computed(() => answerList.value.filter((b) => b).length);
+const nextQuestion = computed(() =>
+  answerList.value.findIndex((v) => v === null)
+);
 
 onMounted(() => {
   const { generateQuizList } = useQuizGenerator();
   quizList.value = generateQuizList();
+  answerList.value = Array.from({ length: quizList.value.length }, () => null);
   confetti.value = new JSConfetti();
 });
-const inputAnswer = (v) => {
-  correctCount.value += v ? 1 : 0;
+const inputAnswer = (i, v) => {
+  answerList.value[i] = v;
   if (v) {
     confetti.value.addConfetti({
       confettiRadius: 2,
@@ -35,10 +40,11 @@ const inputAnswer = (v) => {
     </h1>
     <QuizBlock
       v-for="(quiz, i) in quizList"
-      @inputAnswer="inputAnswer"
+      @inputAnswer="(v) => inputAnswer(i, v)"
       :key="i"
       :quiz="quiz"
       :quizNumber="i + 1"
+      :isActive="nextQuestion === i"
     />
     <p class="text-center my-10 text-xl font-bold">{{ correctCount }} point</p>
   </div>

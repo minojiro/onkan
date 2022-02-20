@@ -1,20 +1,36 @@
 <script lang="ts" setup>
-import { onMounted, ref, computed } from "vue";
+import { onMounted, ref, computed, watch } from "vue";
 import { Quiz, ToneIndex } from "../types";
 import { tones } from "../constants";
 import { useSoundPlayer } from "../composable/useSoundPlayer";
+import scrollToElement from "scroll-to-element";
 
 interface Props {
   quiz: Quiz;
   quizNumber: number;
+  isActive: boolean;
 }
 
 const props = defineProps<Props>();
+const rootRef = ref();
 
 const emit = defineEmits(["inputAnswer"]);
 
 const userInput = ref<ToneIndex[]>([]);
 const isAnswerd = ref(false);
+
+watch(
+  () => props.isActive,
+  (isActive) => {
+    setTimeout(() => {
+      scrollToElement(rootRef.value, {
+        offset: -100,
+        ease: "in-out-cube",
+        duration: 1500,
+      });
+    }, 500);
+  }
+);
 
 const isUserInputCorrect = computed(
   () =>
@@ -62,7 +78,7 @@ const userAnswer = computed(() => {
 </script>
 
 <template>
-  <div class="bg-bg-200 my-5 px-3 pt-7 pb-10 rounded-sm">
+  <div class="bg-bg-200 my-5 px-3 pt-7 pb-10 rounded-sm" ref="rootRef">
     <h2 class="text-center mb-5 text-xl font-bold">No. {{ quizNumber }}</h2>
     <p class="text-center mb-5 text-4xl font-bold uppercase">
       {{ userAnswer }}

@@ -11,6 +11,7 @@
     "nuxt3": "latest"
   },
   "dependencies": {
-    "js-confetti": "^0.10.2"
+    "js-confetti": "^0.10.2",
+    "scroll-to-element": "^2.0.3"
   }
 }
