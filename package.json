@@ -9,5 +9,8 @@
     "@nuxtjs/tailwindcss": "^5.0.0-4",
     "autoprefixer": "^10.4.2",
     "nuxt3": "latest"
+  },
+  "dependencies": {
+    "js-confetti": "^0.10.2"
   }
 }

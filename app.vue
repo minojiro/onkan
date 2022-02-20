@@ -3,15 +3,26 @@ import { ref } from "@vue/reactivity";
 import { onMounted } from "vue";
 import { Quiz } from "./types";
 import { useQuizGenerator } from "./composable/useQuizGenerator";
+import JSConfetti from "js-confetti";
 
 const quizList = ref<Quiz[]>([]);
+const confetti = ref(null);
 const correctCount = ref(0);
 
 onMounted(() => {
   const { generateQuizList } = useQuizGenerator();
   quizList.value = generateQuizList();
+  confetti.value = new JSConfetti();
 });
-const inputAnswer = (v) => (correctCount.value += v ? 1 : 0);
+const inputAnswer = (v) => {
+  correctCount.value += v ? 1 : 0;
+  if (v) {
+    confetti.value.addConfetti({
+      confettiRadius: 2,
+      confettiColors: ["#E0AD7B"],
+    });
+  }
+};
 </script>
 
 <template>
