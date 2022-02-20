@@ -17,10 +17,10 @@ const inputAnswer = (v) => (correctCount.value += v ? 1 : 0);
 <template>
   <div class="mx-auto max-w-2xl px-2">
     <Head>
-      <Title>ONKAN - the absolute pitch quiz.</Title>
+      <Title>ONKAN - the perfect pitch test.</Title>
     </Head>
     <h1 class="my-10">
-      <img src="~/assets/img/logo.svg" class="mx-auto" />
+      <img src="~/assets/img/logo.svg" class="mx-auto" alt="onkan" />
     </h1>
     <QuizBlock
       v-for="(quiz, i) in quizList"

@@ -55,12 +55,10 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="bg-bg-200 my-5 px-3 pt-7 pb-5 rounded-sm">
-    <h2 class="text-center mb-5 text-xl font-bold">
-      Question. {{ quizNumber }}
-    </h2>
+  <div class="bg-bg-200 my-5 px-3 pt-7 pb-10 rounded-sm">
+    <h2 class="text-center mb-5 text-xl font-bold">No. {{ quizNumber }}</h2>
     <form @submit.prevent="submit" class="block">
-      <p class="w-24 mx-auto">
+      <p class="w-40 mx-auto">
         <FlatButton type="button" @click="playSound">play</FlatButton>
       </p>
       <ul class="grid grid-cols-keys grid-rows-2 h-40 gap-1 my-10">

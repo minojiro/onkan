@@ -12,7 +12,7 @@ const emit = defineEmits(["click"]);
   <button
     :type="type"
     @click="emit('click')"
-    class="block border-solid border-2 text-center w-full rounded p-1 font-bold text-sm uppercase"
+    class="block border-solid border-2 text-center w-full rounded p-2 font-bold text-sm uppercase"
   >
     <slot />
   </button>
