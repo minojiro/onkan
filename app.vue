@@ -34,6 +34,7 @@ const inputAnswer = (i, v) => {
   <div class="mx-auto max-w-2xl px-2">
     <Head>
       <Title>ONKAN - the perfect pitch test.</Title>
+      <meta name="description" content="perfect pitch test." />
     </Head>
     <h1 class="my-10">
       <img src="~/assets/img/logo.svg" class="mx-auto" alt="onkan" />
@@ -47,5 +48,14 @@ const inputAnswer = (i, v) => {
       :isActive="nextQuestion === i"
     />
     <p class="text-center my-10 text-xl font-bold">{{ correctCount }} point</p>
+    <p class="border-solid border-t border-bg-200 py-3 text-center text-sm">
+      <a
+        href="https://github.com/minojiro/onkan"
+        target="_blank"
+        class="underline"
+        rel="noopener"
+        >repository</a
+      >
+    </p>
   </div>
 </template>
