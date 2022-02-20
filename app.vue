@@ -5,6 +5,41 @@ import { Quiz } from "./types";
 import { useQuizGenerator } from "./composable/useQuizGenerator";
 import JSConfetti from "js-confetti";
 
+//@ts-ignore
+import ogp from "./assets/img/ogp.png";
+
+useMeta({
+  title: "ONKAN - the perfect pitch test.",
+  meta: [
+    { charset: "utf-8" },
+    { name: "viewport", content: "width=device-width, initial-scale=1" },
+    {
+      hid: "description",
+      name: "description",
+      content: "perfect pitch test.",
+    },
+    { hid: "og:site_name", property: "og:site_name", content: "ONKAN" },
+    { hid: "og:type", property: "og:type", content: "website" },
+    {
+      hid: "og:url",
+      property: "og:url",
+      content: "https://onkan.vercel.app/",
+    },
+    { hid: "og:title", property: "og:title", content: "ONKAN" },
+    {
+      hid: "og:description",
+      property: "og:description",
+      content: "perfect pitch test.",
+    },
+    {
+      hid: "og:image",
+      property: "og:image",
+      content: ogp,
+    },
+    { name: "twitter:card", content: "summary" },
+  ],
+});
+
 const quizList = ref<Quiz[]>([]);
 const confetti = ref(null);
 const answerList = ref<Boolean[]>([]);
@@ -32,10 +67,6 @@ const inputAnswer = (i, v) => {
 
 <template>
   <div class="mx-auto max-w-2xl px-2">
-    <Head>
-      <Title>ONKAN - the perfect pitch test.</Title>
-      <meta name="description" content="perfect pitch test." />
-    </Head>
     <h1 class="my-10">
       <img src="~/assets/img/logo.svg" class="mx-auto" alt="onkan" />
     </h1>
